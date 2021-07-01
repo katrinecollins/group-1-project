@@ -1,4 +1,4 @@
-// var SearchTerm=document.querySelector("#searchTerm").value
+var SearchTerm=document.querySelector("#searchTerm").value
 fetch(`http://www.omdbapi.com/?apikey=803bb7b9&s=flash`)
 .then(function(response){
     console.log("1st respone",response)
