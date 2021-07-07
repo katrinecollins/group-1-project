@@ -22,7 +22,7 @@ function provideData(data){
 //OMDB movie search, Called when search button clicked
 function searchMovie(){
     var searchText=document.querySelector("#searchText").value    
-    fetch(`http://www.omdbapi.com/?apikey=803bb7b9&s=${searchText}`) 
+    fetch(`https://www.omdbapi.com/?apikey=803bb7b9&s=${searchText}`) 
     .then(function(response) {
         return response.json();
     })
