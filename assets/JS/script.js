@@ -44,6 +44,13 @@ function searchMovie(){
     })
 }
 
+// fetch(`https://randommovielines.herokuapp.com//api/v1.0/famousquotes`)
+// .then(function(response) {
+//     console.log(response)
+// })
+
+
+
 //SOME LOCAL STORAGE STUFF I DONT WANT TO TOUCH YET
 
 //TODO: Local Storage?
