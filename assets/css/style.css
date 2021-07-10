@@ -57,7 +57,12 @@ label {font-size: 24px;
     color:blue;
     border-radius: 15px;
 }
+p {font-size: 24px;
+    font-style: italic;}
 
+span {Color:purple;
+      font-style: italic;
+    }
 
 /* nav {background-color: blue;
     padding: 16px;
