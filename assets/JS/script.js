@@ -8,7 +8,7 @@ function searchMovie(){
     historySearch.push(searchText)
     localStorage.setItem("Movie History", JSON.stringify(historySearch));
 
-fetch(`http://www.omdbapi.com/?apikey=803bb7b9&s=${searchText}`)
+fetch(`https://www.omdbapi.com/?apikey=803bb7b9&s=${searchText}`)
 .then(function(response){
     console.log("1st response",response)
     return response.json();
