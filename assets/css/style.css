@@ -5,43 +5,38 @@ html {box-sizing:border-box
 html {-ms-text-size-adjust:100%;
     -webkit-text-size-adjust:100%}
 body {margin:0;
-    background-color: gold;
+    background-color: teal;
 }
 .jumbo {font-size:64px!important;
-        text-align: center;}
-.searchBtn {background-color: blue;
-            color:white;
+        text-align: center;
+    }
+.searchBtn {background-color: purple;
+            color:lightgrey;
             font-style: italic;
             font-weight: bold;
             border-radius: 15px;
             cursor: pointer;
             vertical-align: middle;
         }
-.searchBtn:hover {background-color: red;
-                  color: black;
+.searchBtn:hover {background-color: lightgrey;
+                  color: teal;
 }        
-.queryBtn {background-color: blue;
-    color:white;
+.queryBtn {background-color: purple;
+    color: lightgrey;
     font-style: italic;
     font-weight: bold;
     border-radius: 15px;
     cursor: pointer;
     vertical-align: middle;
 }
-.queryBtn:hover {background-color: hotpink;
-          color: black;
+.queryBtn:hover {background-color: lightgrey;
+          color: teal;
 } 
-.inquiryBtn {background-color: blue;
-    color:white;
-    font-style: italic;
-    font-weight: bold;
-    border-radius: 15px;
-    cursor: pointer;
-    vertical-align: middle;
-}
-.inquiryBtn:hover {background-color: teal;
-          color: black;
-}
+
+label {font-size: 24px;
+      font-style: italic;
+      font-weight: bold;
+    }
 
 .w3-section .input {background-color:white;
     padding:8px;

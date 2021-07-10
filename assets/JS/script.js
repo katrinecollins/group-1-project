@@ -1,59 +1,59 @@
-// VARS
+var historySearch =[]
+if(localStorage.getItem("Movie History")){
+    historySearch=JSON.parse(localStorage.getItem("Movie History"))
+}
 
-var responseContainer = document.querySelector("#response-container")
+function searchMovie(){
+    var searchText=document.querySelector("#searchText").value    
+    historySearch.push(searchText)
+    localStorage.setItem("Movie History", JSON.stringify(historySearch));
 
-// Unused vars
+fetch(`http://www.omdbapi.com/?apikey=803bb7b9&s=${searchText}`)
+.then(function(response){
+    console.log("1st response",response)
+    return response.json();
+})
 
-// var text = document.createElement("text");
-// var TitleNameArr =[""];
-// var ls=JSON.parse(localStorage.getItem("Title-list"));
-// var movieBtns=document.querySelector("#Title-Btns");
+.then(function(response){
+    console.log("OMDB response",response);
+    provideData(response);
+    console.log(searchText);
+    // var Search = response.Search[0].Title
+    return fetch(`https://api.themoviedb.org/3/search/movie?api_key=e03d31621bcab7d9194f6a08d1399d8f&language=en-US&query=${searchText}`)
+})
+.then(function(themoviedbResponse) {
+    return themoviedbResponse.json();
+})
 
-// FUNCTIONS
+.then(function(response){
+    console.log("themoviedb Response",response);
+    generateData(response);
+    console.log(searchText);
+})
 
-//Display received data on website
 function provideData(data){
     console.log("this is the data to provide data function",data.Search[0]);
     document.querySelector("#Title").textContent=data.Search[0].Title;
     document.querySelector("#Poster").src=data.Search[0].Poster;
-    document.querySelector("#Year").textContent=data.Search[0].Year;
+    document.querySelector("#Year").textContent=data.Search[0].Year; 
 }
-
-//OMDB movie search, Called when search button clicked
-function searchMovie(){
-    var searchText=document.querySelector("#searchText").value    
-    fetch(`https://www.omdbapi.com/?apikey=803bb7b9&s=${searchText}`) 
-    .then(function(response) {
-        return response.json();
-    })
-
-    .then(function(response) {
-        provideData(response);
-        var Search = response.Search[0].Title
-        //Wikipedia Search using movie title
-        return fetch(`https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch=${Search}`)
-    })
-
-    .then(function(wikiResponse) {
-        return wikiResponse.json();
-    })
-
-    .then(function(response){
-        console.log("Wikipedia Response",response);
-        //TODO: Use info from Wikipedia API
-    })
+function generateData(data){
+    console.log("This is the data from generate data function",data.results[0]);
+    console.log("This is the data from generate data function",data.results[0].poster_path);
+    document.querySelector("#overview").textContent=data.results[0].overview;
+    document.querySelector("#release_date").textContent=data.results[0].release_date;
+    document.querySelector("#popularity").textContent=data.results[0].popularity;
+    document.querySelector("#vote_count").textContent=data.results[0].vote_count;
+    document.querySelector("#poster_path").src=`https://image.tmdb.org/t/p/w500${data.results[0].poster_path}`;
+    document.querySelector("#original_title").textContent=data.results[0].original_title;
 }
+// var responseContainer=document.querySelector("#response-container")
 
-// fetch(`https://randommovielines.herokuapp.com//api/v1.0/famousquotes`)
-// .then(function(response) {
-//     console.log(response)
-// })
-
-
-
-//SOME LOCAL STORAGE STUFF I DONT WANT TO TOUCH YET
-
-//TODO: Local Storage?
+// var text = document.createElement("text");
+// //text.setAttribute('src', response.data[0]
+// var TitleNameArr =[""];
+// var ls=JSON.parse(localStorage.getItem("Title-list"));
+// var movieBtns=document.querySelector("#Title-Btns");
 
 // if(ls) {console.log("there is no localstorage");
 // }else {
@@ -66,4 +66,4 @@ function searchMovie(){
 // var movieEl =document.querySelector("movie-name");
 // var movie=movieEl.value;
 // console.log("movie is:", movie);
-// }
+}
