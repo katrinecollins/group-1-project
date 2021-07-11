@@ -47,23 +47,4 @@ function generateData(data){
     document.querySelector("#poster_path").src=`https://image.tmdb.org/t/p/w500${data.results[0].poster_path}`;
     document.querySelector("#original_title").textContent=data.results[0].original_title;
 }
-// var responseContainer=document.querySelector("#response-container")
-
-// var text = document.createElement("text");
-// //text.setAttribute('src', response.data[0]
-// var TitleNameArr =[""];
-// var ls=JSON.parse(localStorage.getItem("Title-list"));
-// var movieBtns=document.querySelector("#Title-Btns");
-
-// if(ls) {console.log("there is no localstorage");
-// }else {
-//     movieNameArr.push();
-// }
-// function submitForm(event) {
-//     event.preventDeFault();
-//     console.log("submitting form");
-
-// var movieEl =document.querySelector("movie-name");
-// var movie=movieEl.value;
-// console.log("movie is:", movie);
 }
